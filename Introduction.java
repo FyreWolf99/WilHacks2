@@ -4,7 +4,7 @@ public class Introduction{
   private String eyeColor;
   private String hairColor;
 
-  public Introduction(){
+  public void Intructions(){
     System.out.println("Welcome to the Prison Escape Room Game! Your task is to use various actions including 'look', 'observe', 'interact', and 'clue' to help you escape the prison. ");
     System.out.println("Here is a list the functions of each of the commands: ");
     String look = "look: gives a 360 view of the entire room and the objects within it.";

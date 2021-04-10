@@ -7,6 +7,8 @@ class Rooms {
 private static int roomNum = 1;
 private Scanner scanner1;
 private String inputRooms; 
+boolean running = true;
+
 
   //read the action inputs
   public void Input(){
@@ -15,26 +17,26 @@ private String inputRooms;
     inputRooms = scanner1.nextLine();
 
     if(inputRooms.contains("look")){
-      look();
+      Look();
     }
     
     if(inputRooms.contains("observe")){
-      observe();
+      Observe();
     }
    
     if(inputRooms.contains("interact")){
-      interact();
+      Interact();
     }
     
     if(inputRooms.contains("clue")){
-      clue();
+      Clue();
     }
      
   }
   //possible messages for look
-  public void look(){
+  public void Look(){
     if(roomNum == 1){
-      System.out.println("You’re stuck in a room, all that’s around you is a bed a toilet, a door, and your own thoughts.");
+      System.out.println("You’re stuck in a room, all that’s around you is a bed, a toilet, a door, and your own thoughts.");
     }
 
     if(roomNum == 2){
@@ -47,10 +49,10 @@ private String inputRooms;
 
   }
 
-  public void observe(){
+  public void Observe(){
 
-    Scanner scanner1 = new Scanner(System.in);
-    String inputRooms = scanner1.nextLine();
+    //Scanner scanner1 = new Scanner(System.in);
+    //String inputRooms = scanner1.nextLine();
 
       if(roomNum == 1){
           if(inputRooms.contains("bed")){
@@ -66,22 +68,21 @@ private String inputRooms;
       }
     
   }
-  public void interact(){
+  public void Interact(){
 
-    Scanner scanner1 = new Scanner(System.in);
-    String inputRooms = scanner1.nextLine();
+    //Scanner scanner1 = new Scanner(System.in);
+    //String inputRooms = scanner1.nextLine();
 
     if(roomNum == 1){
       if(inputRooms.contains("key") && inputRooms.contains("door")){
         roomNum = 2;
-        
       }
     }
     
   }
 
 
-  public void clue(){
+  public void Clue(){
     if(roomNum == 1){
       System.out.println("Maybe there’s a key somewhere, try to OBSERVE the BED");
     }
@@ -92,10 +93,12 @@ private String inputRooms;
 
     if(roomNum == 3){
       System.out.println("That guard would be a good weight for that second plate, try to INTERACT with the GUARD.");
-      break
+      running = false
     }
   
 
   }
+
+
 
 }
