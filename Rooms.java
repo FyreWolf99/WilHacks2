@@ -15,6 +15,10 @@ boolean running = true;
 
     scanner1 = new Scanner(System.in);
     inputRooms = scanner1.nextLine();
+    //turns the input to lower case. Makes it easier for the user.
+    inputRooms = inputRooms.toLowerCase(); 
+
+     
 
     if(inputRooms.contains("look")){
       Look();
@@ -36,11 +40,11 @@ boolean running = true;
   //possible messages for look
   public void Look(){
     if(roomNum == 1){
-      System.out.println("You’re stuck in a room, all that’s around you is a bed, a toilet, a door, and your own thoughts.");
+      System.out.println("You’re stuck in a room, all that’s around you is a" + ConsoleColors.YELLOW_BOLD + " bed, a toilet, a door, " + ConsoleColors.RESET +  "and your own thoughts.");
     }
 
     if(roomNum == 2){
-      System.out.println("You’re in the guards' chambers, there’s a guard right ahead of you.");
+      System.out.println("You’re in the guards' chambers, there’s a" + ConsoleColors.YELLOW_BOLD + " guard " + ConsoleColors.RESET +  "right ahead of you.");
     }
 
     if(roomNum == 3){
@@ -55,8 +59,8 @@ boolean running = true;
     //String inputRooms = scanner1.nextLine();
 
       if(roomNum == 1){
-          if(inputRooms.contains("bed")){
-            System.out.println("You take a closer look at the bed, it’s red sheets and white pillow all the more perplexing. After looking under the bed, you find a small key, and take it.");
+          if(inputRooms.toLowerCase().contains("bed")){
+            System.out.println("You take a closer look at the bed, it’s red sheets and white pillow are all the more perplexing. After looking under the bed, you find a small" + ConsoleColors.YELLOW_BOLD + " key, " + ConsoleColors.RESET + "and take it.");
             
           }else if(inputRooms.contains("toilet")){
             System.out.println(" It’s a toilet, white and shiny, it looks like it hasn’t been used so far.");
@@ -84,7 +88,7 @@ boolean running = true;
 
   public void Clue(){
     if(roomNum == 1){
-      System.out.println("Maybe there’s a key somewhere, try to OBSERVE the BED");
+      System.out.println("Maybe there’s a" + ConsoleColors.YELLOW_BOLD + "key" + ConsoleColors.RESET + "somewhere, try to OBSERVE the BED");
     }
 
     if(roomNum == 2){
@@ -93,7 +97,7 @@ boolean running = true;
 
     if(roomNum == 3){
       System.out.println("That guard would be a good weight for that second plate, try to INTERACT with the GUARD.");
-      running = false
+
     }
   
 

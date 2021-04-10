@@ -5,8 +5,6 @@ class Main {
  //we can add more rooms later if there is a need.
 
    public static void main(String[] args){
-  
-    
     Intro();
     Run();
    }
@@ -22,11 +20,10 @@ class Main {
   }
   public static void Run(){
     Rooms StartGame = new Rooms();
-    public static boolean running = true;
+    boolean running = true;
     
-    while(running == true){
+    while(running){
       StartGame.Input();
     }
   }
-
 }
