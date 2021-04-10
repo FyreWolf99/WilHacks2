@@ -8,6 +8,7 @@ private static int roomNum = 1;
 private Scanner scanner1;
 private String inputRooms; 
 boolean running = true;
+private static boolean hasLooked = false;
 
 
   //read the action inputs
@@ -22,25 +23,29 @@ boolean running = true;
 
     if(inputRooms.contains("look")){
       Look();
-    }
-    
-    if(inputRooms.contains("observe")){
+    }else if(inputRooms.contains("observe")){
       Observe();
-    }
-   
-    if(inputRooms.contains("interact")){
+    }else if(inputRooms.contains("interact")){
       Interact();
-    }
-    
-    if(inputRooms.contains("clue")){
+    }else if(inputRooms.contains("clue")){
       Clue();
+    }else if(inputRooms.contains("inventory")){
+      Inventory.PrintInventory();
+    } else {
+      Help();
     }
      
+  }
+
+  public void Help(){
+    System.out.println("Please type a valid command, you can type \" LOOK \", \" OBSERVE \", \" INTERACT \" or \" CLUE \". \" LOOK \" lists all the objects that you see. You can \" OBSERVE \" all the items that you see. You can \" INTERACT \" with any item that you find with other items that you see in the room. Type \" clue \" if you are having a hard time finishing the puzzle. Good luck!");
+
   }
   //possible messages for look
   public void Look(){
     if(roomNum == 1){
       System.out.println("You’re stuck in a room, all that’s around you is a" + ConsoleColors.YELLOW_BOLD + " bed, a toilet, a door, " + ConsoleColors.RESET +  "and your own thoughts.");
+      hasLooked = true;
     }
 
     if(roomNum == 2){
@@ -58,28 +63,39 @@ boolean running = true;
     //Scanner scanner1 = new Scanner(System.in);
     //String inputRooms = scanner1.nextLine();
 
-      if(roomNum == 1){
+      if(roomNum == 1 && hasLooked){
           if(inputRooms.toLowerCase().contains("bed")){
             System.out.println("You take a closer look at the bed, it’s red sheets and white pillow are all the more perplexing. After looking under the bed, you find a small" + ConsoleColors.YELLOW_BOLD + " key, " + ConsoleColors.RESET + "and take it.");
+
+            Inventory.InventoryList("Key");
             
           }else if(inputRooms.contains("toilet")){
             System.out.println(" It’s a toilet, white and shiny, it looks like it hasn’t been used so far.");
           
           }else if(inputRooms.contains("door")){
             System.out.println("it’s a solid grey concrete door, though there is an open keyhole.");
+          }else{
+            System.out.println("This cannot be observed.");
           }
 
+      }else{
+        System.out.println("You cannot obverse an object before you look.");
       }
     
   }
   public void Interact(){
 
-    //Scanner scanner1 = new Scanner(System.in);
-    //String inputRooms = scanner1.nextLine();
-
+    
+    
     if(roomNum == 1){
-      if(inputRooms.contains("key") && inputRooms.contains("door")){
+      if(Inventory.addObjects.contains("Key")){
+        if(inputRooms.contains("key") && inputRooms.contains("door")){
         roomNum = 2;
+        hasLooked = false;
+        System.out.println("Congrats! You made it out of the Jail Cell. ");
+        }
+      } else {
+        System.out.println("You can't do that!");
       }
     }
     
@@ -102,6 +118,8 @@ boolean running = true;
   
 
   }
+  
+  
 
 
 
